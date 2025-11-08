@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Professional Magenta/Pink color palette based on #ff56d5 */
+    --background: 315 40% 6%;
+    --foreground: 315 20% 96%;
+
+    --card: 315 35% 10%;
+    --card-foreground: 315 20% 96%;
+
+    --popover: 315 40% 8%;
+    --popover-foreground: 315 20% 96%;
+
+    /* Primary: Vibrant Magenta #ff56d5 */
+    --primary: 315 100% 67%;
+    --primary-foreground: 315 10% 98%;
+
+    /* Secondary: Softer Pink */
+    --secondary: 315 70% 80%;
+    --secondary-foreground: 315 40% 15%;
+
+    /* Muted tones */
+    --muted: 315 25% 18%;
+    --muted-foreground: 315 15% 65%;
+
+    /* Accent: Lighter Magenta */
+    --accent: 315 90% 75%;
+    --accent-foreground: 315 40% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 315 10% 98%;
+
+    --border: 315 30% 22%;
+    --input: 315 30% 15%;
+    --ring: 315 100% 67%;
+
+    --radius: 1rem;
+
+    /* Custom design tokens */
+    --magenta-deep: 315 100% 55%;
+    --magenta-bright: 315 100% 67%;
+    --magenta-light: 315 80% 75%;
+    --magenta-soft: 315 60% 85%;
+    --pink-accent: 325 90% 70%;
+    --pink-glow: 315 100% 75%;
+    
+    /* Gradients */
+    --gradient-ethereal: linear-gradient(135deg, hsl(315 80% 30%), hsl(325 70% 55%), hsl(315 100% 70%));
+    --gradient-hero: linear-gradient(180deg, hsl(315 40% 8%) 0%, hsl(315 35% 12%) 50%, hsl(325 45% 18%) 100%);
+    --gradient-magenta: linear-gradient(135deg, hsl(315 100% 67%), hsl(325 90% 72%));
+    --gradient-glow: radial-gradient(circle, hsl(315 100% 67% / 0.3), transparent 70%);
+    
+    /* Shadows and glows */
+    --shadow-soft: 0 4px 24px hsl(315 50% 10% / 0.5);
+    --shadow-magenta: 0 0 40px hsl(315 100% 67% / 0.4);
+    --glow-magenta: 0 0 60px hsl(315 100% 67% / 0.6);
+    --glow-pink: 0 0 40px hsl(325 90% 70% / 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Light mode (not primary focus, but kept for accessibility) */
+  .light {
+    --background: 315 30% 97%;
+    --foreground: 315 40% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 315 40% 15%;
+    --primary: 315 100% 67%;
+    --accent: 315 80% 70%;
+    --border: 315 20% 88%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--gradient-hero);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-7xl lg:text-8xl;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+    line-height: 1.2;
+  }
+
+  h3 {
+    @apply text-3xl md:text-4xl;
+    line-height: 1.3;
+  }
+}
+
+@layer utilities {
+  .text-gradient-magenta {
+    background: var(--gradient-magenta);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-ethereal {
+    background: var(--gradient-ethereal);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glow-magenta {
+    box-shadow: var(--glow-magenta);
+  }
+
+  .glow-pink {
+    box-shadow: var(--glow-pink);
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .animate-glow {
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      filter: brightness(1) drop-shadow(0 0 20px hsl(315 100% 67% / 0.4));
+    }
+    50% {
+      filter: brightness(1.2) drop-shadow(0 0 40px hsl(315 100% 67% / 0.8));
+    }
+  }
+}
